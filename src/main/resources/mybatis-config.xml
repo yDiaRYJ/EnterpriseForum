@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--mybatis核心配置文件-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件-->
+<configuration>
+
+    <!--settings:控制mybatis全局行为-->
+    <settings>
+        <!--设置mybatis输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
+    <!--设置别名-->
+    <typeAliases>
+        <!--        配置别名，在写sql文件中的resultType中使用-->
+        <typeAlias type="org.example.Main" alias="dept"/>
+        <package name="实体类的包名"/>
+    </typeAliases>
+
+    <!--设置mapper文件夹的路径，mapper文件夹中，写.xml文件，sql语句，不配置默认mappers创建在resources文件夹中-->
+    <!--    映射器，告诉mybatis到哪去找.xml文件-->
+    <mappers>
+        <!--name是包名，包中所有mapper.xml一次都能加载，将包内的映射器接口实现全部注册为映射器-->
+        <package name="mappers"/>
+    </mappers>
+
+</configuration>
+

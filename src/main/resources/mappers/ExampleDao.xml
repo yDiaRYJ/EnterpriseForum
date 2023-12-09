@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ExamDao">
+    <insert id="addStudent">
+        insert  into exam.student
+            (id,name,age,gender,telephone,email,classId)
+        values
+            (null,#{name},#{age},#{gender},#{telephone},#{email},#{classId})
+    </insert>
+
+
+    <select id="getAllClasses" resultType="com.pojo.Classes">
+        select id, name
+        from exam.classes;
+    </select>
+
+
+    <select id="getAllStudent" resultType="com.pojo.Student">
+        select s.id,
+               s.name,
+               s.age,
+               s.gender,
+               s.telephone,
+               s.email,
+               s.classid
+        from exam.student s
+                 left join classes c
+                           on s.classid = c.id
+    </select>
+
+</mapper>
